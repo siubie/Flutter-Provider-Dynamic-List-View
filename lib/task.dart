@@ -12,7 +12,7 @@ class Task with ChangeNotifier {
 
   void addTask() {
     int taskNumber = taskList.length;
-    taskList.add("$_task");
+    taskList.add("$_task $taskNumber");
     resetFormData();
     notifyListeners();
   }
