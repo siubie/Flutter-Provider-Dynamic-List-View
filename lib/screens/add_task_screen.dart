@@ -12,10 +12,12 @@ class AddTaskScreen extends StatelessWidget {
         title: const Text("Create New Task"),
         actions: [
           TextButton(
-            onPressed: () {
-              context.read<Task>().addTask();
-              Navigator.pop(context);
-            },
+            onPressed: context.watch<Task>().isValid
+                ? () {
+                    context.read<Task>().addTask();
+                    Navigator.pop(context);
+                  }
+                : null,
             child: const Text(
               "Add",
               style: TextStyle(color: Colors.white),
