@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:simple_list/screens/add_task_screen.dart';
-import 'package:simple_list/task.dart';
 import 'package:simple_list/task_list.dart';
 
 class ListTaskScreen extends StatelessWidget {

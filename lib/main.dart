@@ -7,8 +7,12 @@ import 'package:simple_list/task_list.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => Task(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => Task(),
+        ),
+      ],
       child: const MyApp(),
     ),
   );

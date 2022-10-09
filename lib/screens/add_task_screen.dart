@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 import 'package:simple_list/task.dart';
 
@@ -11,21 +9,36 @@ class AddTaskScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Create New Task"),
+        title: const Text("Create New Task"),
         actions: [
           TextButton(
             onPressed: () {
-              context.read<Task>().addTask("New Task");
+              context.read<Task>().addTask();
               Navigator.pop(context);
             },
-            child: Text(
+            child: const Text(
               "Add",
               style: TextStyle(color: Colors.white),
             ),
           ),
         ],
       ),
-      body: Column(),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.all(8),
+        child: Column(
+          children: [
+            TextField(
+              decoration: InputDecoration(
+                hintText: "Masukkan Nama Task",
+                errorText: context.watch<Task>().taskErrorMessage,
+              ),
+              onChanged: (value) {
+                context.read<Task>().setTaskName(value);
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
